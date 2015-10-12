@@ -1,6 +1,6 @@
 # RackTables & Zabbix
 ## Overview
-This project is aimed to RackTables link with Zabbix. Data synchronization Tools is also included.
+This project is aimed to RackTables link with Zabbix. Data synchronization Tools are also included.
 
 ## Description
 1. The data relationship between RackTables and Zabbix is as following:  
@@ -11,9 +11,9 @@ This project is aimed to RackTables link with Zabbix. Data synchronization Tools
   object  | host
   item  | item
   
-  Racktables's item is added in this project.
+  Racktables's item table is added in this project.
 
-2. When change is occurred in RackTables or Zabbix, using the API it can change the other management software.
+2. When change is occurred in RackTables or Zabbix, using the API it automatically changes the other database.
   For example when you update rack in RackTables, the hostgroup that has the same name with the RackTables rack is also updated.
 3. The 3D display page (RackTables only)  
   In the TOP page It display the rack in RackTables on top of 3D scene. The following is what you can actually do:  
