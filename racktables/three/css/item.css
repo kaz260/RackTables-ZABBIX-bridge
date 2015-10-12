@@ -1,0 +1,84 @@
+ul.formlist {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: table;
+	width: 100%;
+}
+ul.formlist li {
+	padding: 2px;
+	height: 100%;
+	vertical-align: middle;
+	display: table;
+	margin: 0 auto;
+	width:100%;
+}
+ul.formlist li .dt {
+	padding: 4px 0 2px;
+	display: table-cell;
+	white-space: nowrap;
+	vertical-align: top;
+	width: 35%;
+	text-align: right;
+}
+ul.formlist li .dd {
+	padding: 2px 0;
+	vertical-align: top;
+	width:65%;
+	text-align:left;
+}
+ul.formlist .formrow .dd .checkbox {
+	vertical-align: middle;
+}
+ul.formlist .formrow .dd {
+	margin-left: 10px;
+}
+ul.formlist .formrow .text-field {
+	margin-top: 2px;
+	display: inline-block;
+	height: 14px;
+}
+ul.formlist .hidden {
+	display: none;
+}
+ul.formlist .text, ul.formlist textarea, ul.formlist .password {
+	padding: 3px;
+}
+ul.formlist select {
+	padding: 2px;
+}
+
+.originalblue .ui-corner-all {
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.objectgroup {
+	padding: 4px;
+}
+.inlineblock {
+	display: inline-block;
+}
+.border_dotted {
+	border: 1px dotted #6C80B9;
+}
+
+.formElementTable tr td {
+	vertical-align: top;
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 24px;
+}
+
+.link_menu { 
+	height: 16px;
+	border: 0;
+	border-bottom: 1px dotted #3C3089;
+	background: none; color: #3C3089;
+	text-decoration: none;
+	padding: 1px 1px 0 1px;
+	margin: 0;
+	cursor: pointer;
+}
+
+

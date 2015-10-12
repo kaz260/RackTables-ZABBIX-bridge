@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Data synchronization Tools</title>
+		<link type="text/css" rel="stylesheet" href="init_data.css"></link>
+	</head>
+
+	<body>
+		<div class="content">
+			<input type="hidden" id="status" value="complete"></input>
+
+			<div class="portlet">
+				<h1>RackTables</h1>
+				<p>1. Delete data of RackTables.</p>
+				<p id="deleteRackTables">
+					<a class="btn btn-primary" href="javascript:;onSubmit('deleteRackTables', 'Delete RackTables data?')">Delete</a>
+					<img class="wait" id="deleteRackTablesWait" src="wait.jpg"></img>
+					<span id="deleteRackTablesMessage"><span>
+				</p>
+				<div class="line"></div>
+				<p>2. Import RackTables data into Zabbix.(Item data is also include)
+					</br>※Please delete the exists data of RackTables before the operation of importing.
+				</p>
+				<p id="initRackTables">
+					<a class="btn btn-primary" href="javascript:;onSubmit('initRackTables', 'Import Zabbix data into RackTables?')">Import</a>
+					<img class="wait" id="initRackTablesWait" src="wait.jpg"></img>
+					<span id="initRackTablesMessage"><span>
+				</p>
+			</div>
+
+			<div class="portlet">
+				<h1>Zabbix</h1>
+				<p>1. Delete data of Zabbix.</p>
+				<p id="deleteZabbix">
+					<a class="btn btn-primary" href="javascript:;onSubmit('deleteZabbix', 'Delete Zabbix data?')">Delete</a>
+					<img class="wait" id="deleteZabbixWait" src="wait.jpg"></img>
+					<span id="deleteZabbixMessage"><span>
+				</p>
+				<div class="line"></div>
+				<p>2. Import Zabbix data into RackTables.(No item data)
+					</br>※Please delete the exists data of Zabbix before the operation of importing.
+				</p>
+				<p id="initZabbix">
+					<a class="btn btn-primary" href="javascript:;onSubmit('initZabbix', 'Import RackTables data into Zabbix?')">Import</a>
+					<img class="wait" id="initZabbixWait" src="wait.jpg"></img>
+					<span id="initZabbixMessage"><span>
+				</p>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			function onSubmit(action, confirmStr) {
+				// confirm the current status
+				var status = document.getElementById("status");
+				if(status.value == "wait") {
+					return;
+				}
+
+				//　display confirm dialog
+				if(! confirm(confirmStr)) {
+					return;
+				}
+
+				// show blank message
+				var messageElement = document.getElementById(action + "Message");
+				messageElement.innerHTML = "";
+
+				// change the current status into waiting, and show waiting icon.
+				document.getElementById(action + "Wait").style.display = "inline";
+				status.value = "wait";
+
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function (){
+					if(xhr.readyState == 4){
+						// display message
+						if(xhr.status == 200) {
+							messageElement.style.color = "";
+							messageElement.innerHTML　= xhr.responseText;
+						} else {
+							messageElement.style.color = "red";
+							messageElement.innerHTML　= "The operation is failed!";
+						}
+
+						// change the current status into complete, and hide the waiting icon.
+						document.getElementById(action + "Wait").style.display = "none";
+						status.value = "complete";
+					}
+				}
+				xhr.open("GET" , "init_data.php?action=" + action);
+				xhr.send(null);
+			}
+		</script>
+	</body>
+</html>
